@@ -27,7 +27,7 @@ public class SummaryRanges {
             treeMap.put(val, new Interval(val, treeMap.get(h).end));
             treeMap.remove(h);
         } else {
-            treeMap.put(new Interval(val, val));
+            treeMap.put(val, new Interval(val, val));
         }
     }
     
