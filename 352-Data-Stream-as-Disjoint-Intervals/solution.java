@@ -15,21 +15,23 @@ public class SummaryRanges {
         treeMap = new TreeMap<>();
     }
     
-    public void addNum(int val) {
-        Integer l = treeMap.lowerKey(val);
-        Integer h = treeMap.higherKey(val);
-        if (l != null && h != null && l + 1 == val && val + 1 == h) {
-            treeMap.get(l).end = treeMap.get(h).end;
-            treeMap.remove(h);
-        } else if (l != null && treeMap.get(l).end + 1 >= val) {
-            treeMap.get(l).end = Math.max(treeMap.get(l).end, val);
-        } else if (h != null && h == val + 1) {
-            treeMap.put(val, new Interval(val, treeMap.get(h).end));
-            treeMap.remove(h);
+public void addNum(int val) {
+        if(tree.containsKey(val)) return;
+        Integer l = tree.lowerKey(val);
+        Integer h = tree.higherKey(val);
+        if(l != null && h != null && tree.get(l).end + 1 == val && h == val + 1) {
+            tree.get(l).end = tree.get(h).end;
+            tree.remove(h);
+        } else if(l != null && tree.get(l).end + 1 >= val) {
+            tree.get(l).end = Math.max(tree.get(l).end, val);
+        } else if(h != null && h == val + 1) {
+            tree.put(val, new Interval(val, tree.get(h).end));
+            tree.remove(h);
         } else {
-            treeMap.put(val, new Interval(val, val));
+            tree.put(val, new Interval(val, val));
         }
     }
+
     
     public List<Interval> getIntervals() {
         return new ArrayList<>(treeMap.values());
