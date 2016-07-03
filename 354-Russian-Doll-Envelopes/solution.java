@@ -7,20 +7,18 @@ public class Solution {
         int m = envelopes.length;
         int n = envelopes[0].length;
         
-        Arrays.sort(envelopes);
+        Arrays.sort(envelopes[0]);
         
-        for (int i = 0; i < m - 1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             int max = 1;
             int rowValue = envelopes[i][0];
             int colValue = envelopes[i][1];
-            for (int j = i + 1; j < m; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (rowValue < envelopes[j][0] && colValue < envelopes[j][1]) {
                     max++;
                     res = Math.max(res, max);
                     rowValue = envelopes[j][0];
                     colValue = envelopes[j][1];
-                } else {
-                    max = 1;
                 }
             }
         }
