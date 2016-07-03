@@ -1,34 +1,21 @@
 public class Solution {
-    public int maxEnvelopes(int[][] envelopes) {
-        int res = 0;
-        if (envelopes == null || envelopes.length == 0) {
-            return 0;
-        }
-        if (m == 1 && n == 1) {
-            return 1;
-        }
-        int m = envelopes.length;
-        int n = envelopes[0].length;
-        
-        Arrays.sort(envelopes, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b) {
-                return Integer.compare(a[0], b[0]);
-            }
-        });
-        
-        for (int i = 0; i < m - 1; i++) {
-            int max = 1;
-            int rowValue = envelopes[i][0];
-            int colValue = envelopes[i][1];
-            for (int j = i + 1; j < m; j++) {
-                if (rowValue < envelopes[j][0] && colValue < envelopes[j][1]) {
-                    max++;
-                    res = Math.max(res, max);
-                    rowValue = envelopes[j][0];
-                    colValue = envelopes[j][1];
-                }
-            }
-        }
-        return res;
+    public int maxEnvelopes(int[][] envelopes) {  
+        Arrays.sort(envelopes, new Comparator<int[]>() {  
+            @Override public int compare(int[] e1, int[] e2) {  
+                return e1[0] - e2[0];  
+            }  
+        });  
+        int max = 0;  
+        int[] counts = new int[envelopes.length];  
+        for(int i=0; i<envelopes.length; i++) {  
+            counts[i] = 1;  
+            for(int j=0; j<i; j++) {  
+                if (envelopes[j][0] < envelopes[i][0] && envelopes[j][1] < envelopes[i][1]) {  
+                    counts[i] = Math.max(counts[i], counts[j] + 1);  
+                }  
+            }  
+            max = Math.max(max, counts[i]);  
+        }  
+        return max;  
     }
 }
