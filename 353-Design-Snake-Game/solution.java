@@ -47,6 +47,7 @@ public class SnakeGame {
         
         //case 1: out of boundary or eating body
         set.remove(body.peekLast()); // new head is legal to be in old tail's position, remove from set temporarily 
+                                    //为什么要移除尾节点？因为贪吃蛇往前移一步的时候 尾部肯定要动，除非吃到food
         if (rowHead < 0 || rowHead == height || colHead < 0 || colHead == width || set.contains(head)) {
             return score = -1;
         }
