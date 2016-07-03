@@ -14,11 +14,13 @@ public class Solution {
             int rowValue = envelopes[i][0];
             int colValue = envelopes[i][1];
             for (int j = i + 1; j < m; j++) {
-                if (rowValue < enveopes[j][0] && colValue < envelopes[j][1]) {
+                if (rowValue < envelopes[j][0] && colValue < envelopes[j][1]) {
                     max++;
                     res = Math.max(res, max);
-                    rowValue = enveopes[j][0];
+                    rowValue = envelopes[j][0];
                     colValue = envelopes[j][1];
+                } else {
+                    max = 1;
                 }
             }
         }
