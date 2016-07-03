@@ -50,9 +50,9 @@ public class SnakeGame {
         if (rowHead < 0 || rowHead == height || colHead < 0 || colHead == width || set.contains(head)) {
             return score = -1;
         }
-
-        // add head for case2 and case3
-        set.add(head); 
+        
+        //Add head for case2 and case3
+        set.add(head);
         body.offerFirst(head);
         
       //case2: eating food, keep tail, add head
