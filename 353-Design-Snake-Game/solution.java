@@ -54,7 +54,7 @@ public class SnakeGame {
         body.offerFirst(head);
         
         //case2: eating food, keep tail, add head
-        if (footIndex < food.length && rowHead == food[foodIndex][0] && colHead == food[foodIndex][1]) {
+        if (foodIndex < food.length && rowHead == food[foodIndex][0] && colHead == food[foodIndex][1]) {
             set.add(body.peekLast());// old tail does not change, so add it back to set
             footIndex++;
             return ++score;
