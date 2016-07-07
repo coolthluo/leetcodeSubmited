@@ -7,21 +7,26 @@ public class Solution {
         int m = envelopes.length;
         int n = envelopes[0].length;
         
-        
         Arrays.sort(envelopes, new Comparator<int[]>() {
             public int compare(int[] a, int[] b) {
-                return Integer.compare(a[0], b[0]);
+                if (a[0] == b[0]) {
+                    return b[1] - a[1];
+                } else {
+                    return a[0] - b[0];
+                }
             }
         });
         
+        int[] dp = new int[envelopes.length];
+        int len = 0;
         for (int i = 0; i < m; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (envelopes[i][0] > envelopes[j][0] && envelopes[i][1] < envelopes[j][1]) {
-                    res = Math.max(res, max);
-                    rowValue = envelopes[j][0];
-                    colValue = envelopes[j][1];
-                }
+            int index = Arrays.binarySearch(dp, 0, ken, envelop[1]);
+            if (index < 0) {
+                index = -(index + 1);
+            }
+            dp[index] = envelope[1];
+            if (index == len) {
+                len++;
             }
         }
         return res;
