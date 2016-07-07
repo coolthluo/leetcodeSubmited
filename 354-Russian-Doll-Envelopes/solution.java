@@ -19,12 +19,12 @@ public class Solution {
         
         int[] dp = new int[envelopes.length];
         int len = 0;
-        for (int i = 0; i < m; i++) {
-            int index = Arrays.binarySearch(dp, 0, len, envelopes[1]);
+        for (int envelope: envelopes) {
+            int index = Arrays.binarySearch(dp, 0, len, envelope[1]);
             if (index < 0) {
                 index = -(index + 1);
             }
-            dp[index] = envelopes[1];
+            dp[index] = envelope[1];
             if (index == len) {
                 len++;
             }
