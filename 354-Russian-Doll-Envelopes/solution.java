@@ -3,7 +3,6 @@ public class Solution {
         if (envelopes == null || envelopes.length == 0) {
             return 0;
         }
-        int res = 1;
         int m = envelopes.length;
         int n = envelopes[0].length;
         
@@ -19,7 +18,7 @@ public class Solution {
         
         int[] dp = new int[envelopes.length];
         int len = 0;
-        for (int envelope: envelopes) {
+        for (int[] envelope: envelopes) {
             int index = Arrays.binarySearch(dp, 0, len, envelope[1]);
             if (index < 0) {
                 index = -(index + 1);
@@ -29,6 +28,6 @@ public class Solution {
                 len++;
             }
         }
-        return res;
+        return len;
     }
 }
