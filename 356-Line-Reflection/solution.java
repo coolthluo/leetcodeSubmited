@@ -14,7 +14,7 @@ public class Solution {
         }
         int mid = max + min;
         for (int[] point : points) {
-            String num = (mid - point[0] + "a" + point[1]);
+            String num = (mid - point[0]) + "a" + point[1];
             if (!set.contains(num)) {
                 return false;
             }
