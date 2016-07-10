@@ -16,7 +16,6 @@ public class Solution {
                 map.put(c, map.get(c) + 1);
             }
         }
-        
         int len = str.length();
         PriorityQueue<Word> pq = new PriorityQueue<Word>((w1, w2) -> (w2.len - w1.len));
         for (Character c : map.keySet()) {
