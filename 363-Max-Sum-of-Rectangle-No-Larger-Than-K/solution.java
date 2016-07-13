@@ -40,7 +40,6 @@ public class Solution {
                     }
                     set.add(curSum);
                 }
-                
             }
         }
         return res;
