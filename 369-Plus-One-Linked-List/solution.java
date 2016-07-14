@@ -8,9 +8,9 @@
  */
 public class Solution {
     public ListNode plusOne(ListNode head) {
-        if(dfs(head) == 0){
+        if (dfs(head) == 0){
             return head;
-        }else{
+        } else {
             ListNode newHead = new ListNode(1);
             newHead.next = head;
             return newHead;
