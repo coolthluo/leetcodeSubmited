@@ -15,8 +15,9 @@ public class Solution {
     //     }
     //     return res;
     // }
-    // O(n + k)
+    // 
     
+    //Brilliant solution O(n + k)
     public int[] getModifiedArray(int length, int[][] updates) {
         if (length == 0) {
             return new int[]{};
