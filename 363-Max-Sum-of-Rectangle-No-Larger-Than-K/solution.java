@@ -33,10 +33,13 @@ public class Solution {
                     curSum += sum;
                     //we use sum subtraction (curSum - sum) to get the subarray with sum <= k
                     //therefore we need to look for the smallest sum >= currSum - k
-                    Integer num = set.ceiling(curSum - k);
-        
-                    if (num != null) {
-                        res = Math.max(curSum - num, res);
+                    
+                    //curSum - preSum <= k -> curSum - k <= preSum -> find max (curSum - preSum);
+                    //curSum - preSum 就是sum[0..j] - {sum[0..0], sum[0,1], sum[0..k] } ，可以取得interval sum！
+                    Integer preSum = set.ceiling(curSum - k);
+                    if (preSum != null) {
+                        int intervalSum = curSum - preSum;
+                        res = Math.max(intervalSum, res);
                     }
                     set.add(curSum);
                 }
