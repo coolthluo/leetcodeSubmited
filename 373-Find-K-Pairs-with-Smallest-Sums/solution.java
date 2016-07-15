@@ -8,10 +8,11 @@ public class Solution {
         for(int i = 0; i < nums1.length && i < k; i++) {
             pq.offer(new int[]{nums1[i], nums2[0], 0});
         }
-        while(k-- > 0 && !pq.isEmpty()){
+        while (!pq.isEmpty() && k > 0) {
             int[] cur = pq.poll();
+            k--;
             res.add(new int[]{cur[0], cur[1]});
-            if(cur[2] == nums2.length - 1) {
+            if (cur[2] == nums2.length - 1) {
                 continue;
             }
             pq.offer(new int[]{cur[0], nums2[cur[2] + 1], cur[2] + 1});
