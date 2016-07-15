@@ -12,9 +12,9 @@ public class Solution extends GuessGame {
            if (guess(mid) == 0) {
                return mid;
            } else if (guess(mid) == 1) {
-               end = mid;
-           } else if (guess(mid) == -1) {
                start = mid;
+           } else if (guess(mid) == -1) {
+               end = mid;
            }
        }
        if (guess(start) == 0) {
